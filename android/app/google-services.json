@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "838454359922",
+    "firebase_url": "https://movieflix-2dd00-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "movieflix-2dd00",
+    "storage_bucket": "movieflix-2dd00.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:838454359922:android:dc2ab300f7e51eb92e8feb",
+        "android_client_info": {
+          "package_name": "com.example.movieflix"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "838454359922-h7tk62egf0f5jfslkts2ol2dbnttldpc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRjNd7SWQIOO2B5kK2WkYK4coFDCbBjYk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "838454359922-h7tk62egf0f5jfslkts2ol2dbnttldpc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
