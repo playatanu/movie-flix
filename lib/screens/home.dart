@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:movieflix/widgets/hvideo.dart';
-import 'package:movieflix/widgets/serise.dart';
+import 'package:movieflix/screens/serise.dart';
+import 'package:movieflix/widgets/slider.dart';
 
 import 'allmovie.dart';
 
@@ -15,6 +15,8 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final firestore = FirebaseFirestore.instance;
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -32,27 +34,7 @@ class _HomeState extends State<Home> {
           children: [
             Padding(
               padding: const EdgeInsets.only(top: 10),
-              child: CarouselSlider(
-                  items: [
-                    seriesBanner(indexq: 0),
-                    movieList2(indexq: 0),
-                    seriesBanner(indexq: 1),
-                    movieList2(indexq: 1),
-                  ],
-                  options: CarouselOptions(
-                    height: 180,
-                    aspectRatio: 16 / 9,
-                    viewportFraction: 0.8,
-                    initialPage: 0,
-                    enableInfiniteScroll: true,
-                    reverse: false,
-                    autoPlay: true,
-                    autoPlayInterval: Duration(seconds: 3),
-                    autoPlayAnimationDuration: Duration(milliseconds: 800),
-                    autoPlayCurve: Curves.fastOutSlowIn,
-                    enlargeCenterPage: true,
-                    scrollDirection: Axis.horizontal,
-                  )),
+              child: CrouselSlider(),
             ),
             Padding(
               padding: const EdgeInsets.all(12.0),

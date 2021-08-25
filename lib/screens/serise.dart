@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:movieflix/screens/videoinfo.dart';
 
+// ignore: camel_case_types
 class seriesList extends StatelessWidget {
   const seriesList({
     Key? key,
@@ -29,6 +30,7 @@ class seriesList extends StatelessWidget {
   }
 }
 
+// ignore: camel_case_types
 class sitemBuild extends StatelessWidget {
   const sitemBuild({
     Key? key,

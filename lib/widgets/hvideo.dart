@@ -30,6 +30,7 @@ class movieList extends StatelessWidget {
   }
 }
 
+// ignore: camel_case_types
 class itemBuild extends StatelessWidget {
   const itemBuild({
     Key? key,
@@ -103,6 +104,7 @@ class movieList2 extends StatelessWidget {
   }
 }
 
+// ignore: camel_case_types
 class itemBuild2 extends StatelessWidget {
   const itemBuild2({
     Key? key,
@@ -172,6 +174,7 @@ class seriesBanner extends StatelessWidget {
   }
 }
 
+// ignore: camel_case_types
 class seriesBanneritemBuild extends StatelessWidget {
   const seriesBanneritemBuild({
     Key? key,
