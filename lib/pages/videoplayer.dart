@@ -32,12 +32,6 @@ class _VideoPlayerState extends State<VideoPlayer> {
                 autoPlay: true,
                 looping: true,
                 fullScreenByDefault: true,
-                [
-        DeviceOrientation.landscapeRight,
-        DeviceOrientation.landscapeLeft,
-        DeviceOrientation.portraitUp,
-        DeviceOrientation.portraitDown,
-      ],
               ),
             ),
           )),

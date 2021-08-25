@@ -1,87 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:movieflix/screens/videoinfo.dart';
+import 'package:movieflix/pages/videoinfo.dart';
+
+
 
 // ignore: camel_case_types
-class movieList extends StatelessWidget {
-  const movieList({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 230,
-      child: StreamBuilder<QuerySnapshot>(
-        stream: FirebaseFirestore.instance.collection('movies').snapshots(),
-        builder: (context, snapshot) {
-          return ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: snapshot.data!.docs.length,
-              //itemCount: 5,
-              itemBuilder: (context, index) {
-                DocumentSnapshot movie = snapshot.data!.docs[index];
-
-                return itemBuild(movie: movie);
-              });
-        },
-      ),
-    );
-  }
-}
-
-// ignore: camel_case_types
-class itemBuild extends StatelessWidget {
-  const itemBuild({
-    Key? key,
-    required this.movie,
-  }) : super(key: key);
-
-  final DocumentSnapshot<Object?> movie;
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => VideoInfo(
-                      imageurl: movie['movieImage'],
-                      videourl: movie['videoUrl'],
-                      moviename: movie['movieName'],
-                    )));
-      },
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Container(
-          //margin: EdgeInsets.symmetric(vertical: 20.0),
-          alignment: Alignment.bottomLeft,
-          width: 130,
-          height: 300,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10.0),
-              image: DecorationImage(
-                  image: NetworkImage(
-                    movie['movieImage'],
-                  ),
-                  fit: BoxFit.cover)),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              movie['movieName'],
-              style: TextStyle(color: Colors.white, fontSize: 20),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-// ignore: camel_case_types
-class movieList2 extends StatelessWidget {
-  const movieList2({required this.indexq});
+class MovieList2 extends StatelessWidget {
+  const MovieList2({required this.indexq});
 
   final int indexq;
 
@@ -150,8 +75,8 @@ class itemBuild2 extends StatelessWidget {
 }
 
 // ignore: camel_case_types
-class seriesBanner extends StatelessWidget {
-  const seriesBanner({required this.indexq});
+class SeriesBanner extends StatelessWidget {
+  const SeriesBanner({required this.indexq});
 
   final int indexq;
 
@@ -166,7 +91,7 @@ class seriesBanner extends StatelessWidget {
               itemBuilder: (context, index) {
                 DocumentSnapshot movie = snapshot.data!.docs[indexq];
 
-                return seriesBanneritemBuild(movie: movie);
+                return SeriesBanneritemBuild(movie: movie);
               });
         },
       ),
@@ -175,8 +100,8 @@ class seriesBanner extends StatelessWidget {
 }
 
 // ignore: camel_case_types
-class seriesBanneritemBuild extends StatelessWidget {
-  const seriesBanneritemBuild({
+class SeriesBanneritemBuild extends StatelessWidget {
+  const SeriesBanneritemBuild({
     Key? key,
     required this.movie,
   }) : super(key: key);

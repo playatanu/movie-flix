@@ -10,8 +10,10 @@ class AllSeries extends StatefulWidget {
 class _AllSeriesState extends State<AllSeries> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-       child: null,
+    return Scaffold(
+      body: Container(
+        child: null,
+      ),
     );
   }
 }

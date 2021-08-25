@@ -1,10 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:movieflix/pages/videoinfo.dart';
 
-// ignore: camel_case_types
-class SeriesList extends StatelessWidget {
-  const SeriesList({
+class MovieList extends StatelessWidget {
+  const MovieList({
     Key? key,
   }) : super(key: key);
 
@@ -13,7 +12,7 @@ class SeriesList extends StatelessWidget {
     return Container(
       height: 230,
       child: StreamBuilder<QuerySnapshot>(
-        stream: FirebaseFirestore.instance.collection('webseries').snapshots(),
+        stream: FirebaseFirestore.instance.collection('movies').snapshots(),
         builder: (context, snapshot) {
           return ListView.builder(
               scrollDirection: Axis.horizontal,
@@ -22,7 +21,7 @@ class SeriesList extends StatelessWidget {
               itemBuilder: (context, index) {
                 DocumentSnapshot movie = snapshot.data!.docs[index];
 
-                return sitemBuild(movie: movie);
+                return itemBuild(movie: movie);
               });
         },
       ),
@@ -31,8 +30,8 @@ class SeriesList extends StatelessWidget {
 }
 
 // ignore: camel_case_types
-class sitemBuild extends StatelessWidget {
-  const sitemBuild({
+class itemBuild extends StatelessWidget {
+  const itemBuild({
     Key? key,
     required this.movie,
   }) : super(key: key);
