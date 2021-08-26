@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:movieflix/pages/fulllist.dart';
 
-class HeaderText extends StatelessWidget {
-  const HeaderText({required this.section});
+class HeaderText extends StatefulWidget {
+  const HeaderText({required this.section, required this.db});
 
   final String section;
+  final String db;
 
+  @override
+  _HeaderTextState createState() => _HeaderTextState();
+}
+
+class _HeaderTextState extends State<HeaderText> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -14,7 +20,7 @@ class HeaderText extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            section,
+            widget.section,
             style: TextStyle(
                 fontSize: 18, color: Colors.white, fontWeight: FontWeight.w100),
           ),
@@ -23,14 +29,9 @@ class HeaderText extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => (section == 'New Movie')
-                        ? FullList(
-                            name: 'movies',
-                          )
-                        : FullList(
-                            name: 'webseries',
-                          ),
-                  ));
+                      builder: (context) => FullList(
+                            name: widget.db,
+                          )));
             },
             child: Text(
               'View All',

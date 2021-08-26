@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:movieflix/pages/videoinfo.dart';
 
-class MovieList extends StatelessWidget {
-  const MovieList({
+class NewList extends StatelessWidget {
+  const NewList({
     Key? key,
   }) : super(key: key);
 
@@ -44,41 +44,40 @@ class itemBuild extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => VideoInfo(
-                      imageurl: movie['movieImage'],
-                      videourl: movie['videoUrl'],
-                      moviename: movie['movieName'],
-                    )));
-      },
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Container(
-          //margin: EdgeInsets.symmetric(vertical: 20.0),
-          alignment: Alignment.bottomLeft,
-          width: 130,
-          height: 300,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10.0),
-              image: DecorationImage(
-                  image: NetworkImage(
-                    movie['movieImage'],
-                  ),
-                  fit: BoxFit.cover)),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              movie['movieName'],
-              style: TextStyle(
-                color: Colors.white,
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => VideoInfo(
+                        imageurl: movie['movieImage'],
+                        videourl: movie['videoUrl'],
+                        moviename: movie['movieName'],
+                      )));
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              Container(
+                alignment: Alignment.bottomLeft,
+                width: 120,
+                height: 200,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.0),
+                    image: DecorationImage(
+                        image: NetworkImage(
+                          movie['movieImage'],
+                        ),
+                        fit: BoxFit.cover)),
               ),
-            ),
+              Text(
+                movie['movieName'],
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            ],
           ),
-        ),
-      ),
-    );
+        ));
   }
 }

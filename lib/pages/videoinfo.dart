@@ -90,9 +90,15 @@ class _VideoInfoState extends State<VideoInfo> {
                                   SizedBox(
                                     height: 50,
                                   ),
-                                  HeaderText(section: 'New Movie'),
+                                  HeaderText(
+                                    section: 'New Movie',
+                                    db: 'movies',
+                                  ),
                                   MovieList(),
-                                  HeaderText(section: 'Web Series'),
+                                  HeaderText(
+                                    section: 'Web Series',
+                                    db: 'webseries',
+                                  ),
                                   SeriesList(),
                                 ],
                               )),

@@ -13,12 +13,15 @@ class SeriesList extends StatelessWidget {
     return Container(
       height: 230,
       child: StreamBuilder<QuerySnapshot>(
-        stream: FirebaseFirestore.instance.collection('webseries').snapshots(),
+        stream: FirebaseFirestore.instance
+            .collection('webseries')
+            .orderBy('movieNumber', descending: true)
+            .snapshots(),
         builder: (context, snapshot) {
           return ListView.builder(
               scrollDirection: Axis.horizontal,
               //itemCount: snapshot.data!.docs.length,
-              itemCount: 6,
+              itemCount: 5,
               itemBuilder: (context, index) {
                 DocumentSnapshot movie = snapshot.data!.docs[index];
 
@@ -70,7 +73,7 @@ class sitemBuild extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Text(
               movie['movieName'],
-              style: TextStyle(color: Colors.white, fontSize: 20),
+              style: TextStyle(color: Colors.white),
             ),
           ),
         ),

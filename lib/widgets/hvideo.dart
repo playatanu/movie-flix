@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:movieflix/pages/videoinfo.dart';
 
-
-
 // ignore: camel_case_types
 class MovieList2 extends StatelessWidget {
   const MovieList2({required this.indexq});
@@ -14,7 +12,10 @@ class MovieList2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: StreamBuilder<QuerySnapshot>(
-        stream: FirebaseFirestore.instance.collection('movies').snapshots(),
+        stream: FirebaseFirestore.instance
+            .collection('movies')
+            .orderBy('movieNumber', descending: true)
+            .snapshots(),
         builder: (context, snapshot) {
           return ListView.builder(
               itemCount: 1,
@@ -84,7 +85,10 @@ class SeriesBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: StreamBuilder<QuerySnapshot>(
-        stream: FirebaseFirestore.instance.collection('webseries').snapshots(),
+        stream: FirebaseFirestore.instance
+            .collection('webseries')
+            .orderBy('movieNumber', descending: true)
+            .snapshots(),
         builder: (context, snapshot) {
           return ListView.builder(
               itemCount: 1,

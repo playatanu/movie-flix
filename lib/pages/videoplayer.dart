@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:better_player/better_player.dart';
+import 'package:flutter/material.dart';
 
 class VideoPlayer extends StatefulWidget {
   VideoPlayer({required this.videourl});
@@ -19,22 +19,19 @@ class _VideoPlayerState extends State<VideoPlayer> {
         backgroundColor: Color(0x44000000),
         elevation: 0,
       ),
-      body: Material(
-          color: Colors.black,
-          child: Hero(
-            tag: ' playvideo',
-            child: BetterPlayer.network(
-              // igdggnore: unnecessary_null_comparison
-              widget.videourl,
-
-              betterPlayerConfiguration: BetterPlayerConfiguration(
-                fit: BoxFit.fill,
-                autoPlay: true,
-                looping: true,
-                fullScreenByDefault: true,
-              ),
-            ),
-          )),
+      body: Container(
+        color: Colors.black,
+        child: BetterPlayer.network(
+          widget.videourl,
+          betterPlayerConfiguration: BetterPlayerConfiguration(
+            aspectRatio: 1,
+            looping: true,
+            autoPlay: true,
+            fit: BoxFit.fill,
+            fullScreenAspectRatio: 1,
+          ),
+        ),
+      ),
     );
   }
 }

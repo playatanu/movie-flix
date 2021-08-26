@@ -2,31 +2,29 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:movieflix/pages/videoinfo.dart';
 
-class FullListItem extends StatefulWidget {
-  FullListItem({required this.name});
+class HitMovieList extends StatelessWidget {
+  const HitMovieList({
+    Key? key,
+  }) : super(key: key);
 
-  final String name;
-
-  @override
-  _FullListItemState createState() => _FullListItemState();
-}
-
-class _FullListItemState extends State<FullListItem> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 230,
       child: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
-            .collection(widget.name)
+            .collection('hitmovies')
             .orderBy('movieNumber', descending: true)
             .snapshots(),
         builder: (context, snapshot) {
           return ListView.builder(
-              itemCount: snapshot.data!.docs.length,
+              scrollDirection: Axis.horizontal,
+              //itemCount: snapshot.data!.docs.length,
+              itemCount: 5,
               itemBuilder: (context, index) {
                 DocumentSnapshot movie = snapshot.data!.docs[index];
 
-                return FullListItemBuild(movie: movie);
+                return itemBuild(movie: movie);
               });
         },
       ),
@@ -35,8 +33,8 @@ class _FullListItemState extends State<FullListItem> {
 }
 
 // ignore: camel_case_types
-class FullListItemBuild extends StatelessWidget {
-  const FullListItemBuild({
+class itemBuild extends StatelessWidget {
+  const itemBuild({
     Key? key,
     required this.movie,
   }) : super(key: key);
@@ -60,23 +58,23 @@ class FullListItemBuild extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Container(
           //margin: EdgeInsets.symmetric(vertical: 20.0),
-
           alignment: Alignment.bottomLeft,
-          /* width: 300,
-          height: 300,*/
-          height: 170,
+          width: 130,
+          height: 300,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10.0),
               image: DecorationImage(
                   image: NetworkImage(
-                    movie['movieCover'],
+                    movie['movieImage'],
                   ),
                   fit: BoxFit.cover)),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
               movie['movieName'],
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(
+                color: Colors.white,
+              ),
             ),
           ),
         ),
