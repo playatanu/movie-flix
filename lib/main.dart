@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:movieflix/pages/moviemenu.dart';
+import 'package:movieflix/pages/livetvmenu.dart';
 import 'package:movieflix/pages/setting.dart';
 import 'package:movieflix/screens/home.dart';
 //import 'package:flutter/services.dart';
@@ -27,8 +27,8 @@ class _MyAppState extends State<MyApp> {
 
   static const List<Widget> _widgetOptions = <Widget>[
     Home(),
-    MovieMenu(),
-    Setting(),
+    TvMenu(),
+    TvMenu(),
     Setting(),
   ];
 
@@ -64,16 +64,16 @@ class _MyAppState extends State<MyApp> {
                 //backgroundColor: Colors.green
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.movie),
-                title: Text('Movies'),
+                icon: Icon(Icons.live_tv),
+                title: Text('Live TV'),
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.video_stable),
-                title: Text('Web Series'),
+                icon: Icon(Icons.sports_esports),
+                title: Text('Sports'),
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.person),
-                title: Text('Profile'),
+                icon: Icon(Icons.settings),
+                title: Text('Settings'),
               ),
             ],
             type: BottomNavigationBarType.shifting,
