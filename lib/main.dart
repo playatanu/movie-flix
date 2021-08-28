@@ -2,7 +2,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:movieflix/pages/livetvmenu.dart';
 import 'package:movieflix/pages/setting.dart';
+import 'package:movieflix/pages/sports.dart';
 import 'package:movieflix/screens/home.dart';
+import 'package:movieflix/screens/searchscreen.dart';
 //import 'package:flutter/services.dart';
 
 Future<void> main() async {
@@ -27,8 +29,9 @@ class _MyAppState extends State<MyApp> {
 
   static const List<Widget> _widgetOptions = <Widget>[
     Home(),
+    SearchScreen(),
     TvMenu(),
-    TvMenu(),
+    Sport(),
     Setting(),
   ];
 
@@ -50,10 +53,6 @@ class _MyAppState extends State<MyApp> {
         ),
         debugShowCheckedModeBanner: false,
         home: Scaffold(
-          appBar: AppBar(
-            title: Text('MovieFlix'),
-            centerTitle: true,
-          ),
           //drawer: Drawer(),
           body: _widgetOptions.elementAt(_selectedIndex),
           bottomNavigationBar: BottomNavigationBar(
@@ -62,6 +61,10 @@ class _MyAppState extends State<MyApp> {
                 icon: Icon(Icons.home),
                 title: Text('Home'),
                 //backgroundColor: Colors.green
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.search),
+                title: Text('Search'),
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.live_tv),

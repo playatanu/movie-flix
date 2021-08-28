@@ -32,100 +32,106 @@ class _SettingState extends State<Setting> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          Container(
-            color: Colors.white,
-            child: new Image.asset(
-              'images/logo.png',
-              fit: BoxFit.fitHeight,
-            ),
-          ),
-          ListTile(
-            leading: Icon(
-              Icons.android,
-              color: Colors.white54,
-            ),
-            hoverColor: Colors.black,
-            subtitle: Text(
-              _packageInfo.version,
-              style: TextStyle(
-                color: Colors.white54,
-                fontSize: 10,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('MovieFlix'),
+        centerTitle: true,
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              color: Colors.white,
+              child: new Image.asset(
+                'images/logo.png',
+                fit: BoxFit.fitHeight,
               ),
             ),
-            title: Text(
-              _packageInfo.appName,
-              style: TextStyle(
+            ListTile(
+              leading: Icon(
+                Icons.android,
                 color: Colors.white54,
               ),
-            ),
-          ),
-          ListTile(
-            leading: Icon(
-              Icons.ios_share,
-              color: Colors.white54,
-            ),
-            hoverColor: Colors.black,
-            onTap: () {
-              Share.share('Download MovieFlix https://playflix.netlify.app/');
-            },
-            subtitle: Text(
-              'Share movieflix with your friends.',
-              style: TextStyle(
-                color: Colors.white54,
-                fontSize: 10,
+              hoverColor: Colors.black,
+              subtitle: Text(
+                _packageInfo.version,
+                style: TextStyle(
+                  color: Colors.white54,
+                  fontSize: 10,
+                ),
+              ),
+              title: Text(
+                _packageInfo.appName,
+                style: TextStyle(
+                  color: Colors.white54,
+                ),
               ),
             ),
-            title: Text(
-              'Share',
-              style: TextStyle(
+            ListTile(
+              leading: Icon(
+                Icons.ios_share,
                 color: Colors.white54,
               ),
-            ),
-          ),
-          ListTile(
-            leading: Icon(
-              Icons.mail,
-              color: Colors.white54,
-            ),
-            hoverColor: Colors.black,
-            subtitle: Text(
-              'playflix@gmail.com',
-              style: TextStyle(
-                color: Colors.white54,
-                fontSize: 10,
+              hoverColor: Colors.black,
+              onTap: () {
+                Share.share('Download MovieFlix https://playflix.netlify.app/');
+              },
+              subtitle: Text(
+                'Share movieflix with your friends.',
+                style: TextStyle(
+                  color: Colors.white54,
+                  fontSize: 10,
+                ),
+              ),
+              title: Text(
+                'Share',
+                style: TextStyle(
+                  color: Colors.white54,
+                ),
               ),
             ),
-            title: Text(
-              'Contact',
-              style: TextStyle(
+            ListTile(
+              leading: Icon(
+                Icons.mail,
                 color: Colors.white54,
               ),
-            ),
-          ),
-          ListTile(
-            leading: Icon(
-              Icons.update,
-              color: Colors.white54,
-            ),
-            hoverColor: Colors.black,
-            subtitle: Text(
-              'Chake for updates',
-              style: TextStyle(
-                color: Colors.white54,
-                fontSize: 10,
+              hoverColor: Colors.black,
+              subtitle: Text(
+                'playflix@gmail.com',
+                style: TextStyle(
+                  color: Colors.white54,
+                  fontSize: 10,
+                ),
+              ),
+              title: Text(
+                'Contact',
+                style: TextStyle(
+                  color: Colors.white54,
+                ),
               ),
             ),
-            title: Text(
-              'Update',
-              style: TextStyle(
+            ListTile(
+              leading: Icon(
+                Icons.update,
                 color: Colors.white54,
               ),
+              hoverColor: Colors.black,
+              subtitle: Text(
+                'Chake for updates',
+                style: TextStyle(
+                  color: Colors.white54,
+                  fontSize: 10,
+                ),
+              ),
+              title: Text(
+                'Update',
+                style: TextStyle(
+                  color: Colors.white54,
+                ),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
 

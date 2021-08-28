@@ -1,9 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:movieflix/pages/videoinfo.dart';
+import 'package:movieflix/pages/videoplayer.dart';
 
-class MovieList extends StatelessWidget {
-  const MovieList({
+class TVList extends StatelessWidget {
+  const TVList({
     Key? key,
   }) : super(key: key);
 
@@ -12,20 +13,15 @@ class MovieList extends StatelessWidget {
     return Container(
       height: 230,
       child: StreamBuilder<QuerySnapshot>(
-        stream: FirebaseFirestore.instance
-            .collection('movies')
-            .where('tag', isEqualTo: 'movie')
-            //.orderBy('movieNumber', descending: true)
-            .snapshots(),
+        stream: FirebaseFirestore.instance.collection('tv').snapshots(),
         builder: (context, snapshot) {
           return ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: snapshot.data!.docs.length,
-              // itemCount: 5,
               itemBuilder: (context, index) {
-                DocumentSnapshot movie = snapshot.data!.docs[index];
+                DocumentSnapshot tv = snapshot.data!.docs[index];
 
-                return itemBuild(movie: movie);
+                return itemBuild(tv: tv);
               });
         },
       ),
@@ -37,10 +33,10 @@ class MovieList extends StatelessWidget {
 class itemBuild extends StatelessWidget {
   const itemBuild({
     Key? key,
-    required this.movie,
+    required this.tv,
   }) : super(key: key);
 
-  final DocumentSnapshot<Object?> movie;
+  final DocumentSnapshot<Object?> tv;
 
   @override
   Widget build(BuildContext context) {
@@ -49,10 +45,8 @@ class itemBuild extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => VideoInfo(
-                      imageurl: movie['movieImage'],
-                      videourl: movie['videoUrl'],
-                      moviename: movie['movieName'],
+                builder: (context) => VideoPlayer(
+                      videourl: tv['tvUrl'],
                     )));
       },
       child: Padding(
@@ -66,13 +60,13 @@ class itemBuild extends StatelessWidget {
               borderRadius: BorderRadius.circular(10.0),
               image: DecorationImage(
                   image: NetworkImage(
-                    movie['movieImage'],
+                    tv['tvImage'],
                   ),
                   fit: BoxFit.cover)),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              movie['movieName'],
+              tv['tvName'],
               style: TextStyle(
                 color: Colors.white,
               ),
